@@ -9,6 +9,7 @@ class Iterator;
 
 template <typename T>
 class Node {
+public:
     T data;
     Node<T> *left;
     Node<T> *right;
@@ -17,7 +18,8 @@ class Node {
     friend class BSTree; 
 
     template<class>
-    friend class Iterator; 
+    friend class Iterator;
+    Node(T data):data(data),left(nullptr),right(nullptr){};
 };
 
 #endif
