@@ -20,6 +20,14 @@ public:
     template<class>
     friend class Iterator;
     Node(T data):data(data),left(nullptr),right(nullptr){};
+
+    void killself(){
+        if(this->left!= nullptr)
+            this->left->killself();
+        if(this->right!= nullptr)
+            this->right->killself();
+        delete this;
+    }
 };
 
 #endif

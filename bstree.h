@@ -16,6 +16,9 @@ class BSTree {
         BSTree() : root(nullptr),nodos(0) {};
 
         bool find(T data) {
+            if(size()==0){
+                return false;
+            }
             auto aux=root;
             while (true){
                 if(aux->data>data ){
@@ -174,9 +177,18 @@ class BSTree {
             return nodos;
         }
 
-        int height() {
-            // TODO
+    int height() {
+        return hallar_altura(this->root);
+    }
+
+    int hallar_altura(Node<T>* temp)
+    {
+        if(temp == nullptr)
+        {
+            return -1;
         }
+        return max(hallar_altura(temp->left),hallar_altura(temp->right))+1;
+    }
 
         void traversePreOrder() {
             preorder(root);
@@ -215,10 +227,12 @@ class BSTree {
 
         Iterator<T> begin() {
             auto aux=root;
-            while(aux->left!= nullptr){
-                aux=aux->left;
+            if(aux!= nullptr) {
+                while (aux->left != nullptr) {
+                    aux = aux->left;
+                }
+                return Iterator<T>(aux, root);
             }
-            return Iterator<T>(aux,root);
         }
 
         Iterator<T> end() {
@@ -230,7 +244,7 @@ class BSTree {
         }
 
         ~BSTree() {
-            // TODO
+            root->killself();
         }
 };
 
