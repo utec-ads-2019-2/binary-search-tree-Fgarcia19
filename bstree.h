@@ -73,6 +73,7 @@ class BSTree {
         }
 
         bool remove(T data) {
+            // Mucho código repetido, podrías reducirlo bastante usando por ejemplo un doble puntero
             if(!root){
                 return false;
             }
@@ -181,6 +182,7 @@ class BSTree {
         return hallar_altura(this->root);
     }
 
+    // Debería ser privado
     int hallar_altura(Node<T>* temp)
     {
         if(temp == nullptr)
@@ -194,6 +196,7 @@ class BSTree {
             preorder(root);
         }
 
+        // Debería ser privado
         void preorder(Node<T>* aux){
             if (aux== nullptr) return;
             cout << aux->data << " ";
@@ -205,6 +208,7 @@ class BSTree {
             inorder(root);
         }
 
+        // Debería ser privado
         void inorder(Node<T>* aux){
             if (aux== nullptr) return;
             inorder(aux->left);
@@ -217,6 +221,7 @@ class BSTree {
             postorder(root);
         }
 
+        // Debería ser privado
         void postorder(Node<T>* aux){
             if (aux== nullptr) return;
             traversepostOrder(aux->left);

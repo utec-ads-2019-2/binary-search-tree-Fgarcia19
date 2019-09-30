@@ -48,6 +48,7 @@ class Iterator {
     }
 
     Iterator<T>& operator++() {
+        // Esto es muy ineficiente, vas a hacer un recorrido cada vez que quieras avanzar
         auto cola = raiz;
         while(cola->right!=nullptr)
         {
